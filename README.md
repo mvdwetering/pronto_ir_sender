@@ -4,6 +4,11 @@ A [Home Assistant](https://www.home-assistant.io/) custom integration that expos
 
 [![HACS](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz)
 
+## Disclaimers
+
+1. For full transparency, almost all code is written by AI. I reviewed it and it seems fine, but just wanted to mention it.
+2. This was a quick hack to get my weekend IR project finished in the weekend. I do not intend to expand it further.
+
 ## Requirements
 
 - Home Assistant with the `infrared` domain available (introduced in 2026.4)
@@ -60,15 +65,15 @@ data:
 
 Only **raw Pronto codes** (type `0000`) are supported. These are space-separated 4-digit hex words:
 
-```
+```text
 0000 <freq> <n1> <n2> <mark> <space> … [n1 pairs] <mark> <space> … [n2 pairs]
 ```
 
 | Field | Description |
-|-------|-------------|
+| ----- | ----------- |
 | `0000` | Raw format indicator |
 | `freq` | Carrier frequency code (actual Hz ≈ 1 000 000 / (freq × 0.241246)) |
 | `n1` | Number of mark/space pairs in the "once" sequence |
 | `n2` | Number of mark/space pairs in the optional repeat sequence |
 
-Raw Pronto codes can be found on [Remote Central](http://www.remotecentral.com/) or exported from tools like [IrScrutinizer](https://github.com/bengtmartensson/IrScrutinizer).
+Raw Pronto codes can be found on [Remote Central](http://www.remotecentral.com/), exported from tools like [IrScrutinizer](https://github.com/bengtmartensson/IrScrutinizer) or dumped from the [ESP Home IR receiver](https://esphome.io/components/remote_receiver/#configuration-variables) with the `dump: all` option enabled.
