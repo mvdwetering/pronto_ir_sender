@@ -6,8 +6,8 @@ A [Home Assistant](https://www.home-assistant.io/) custom integration that expos
 
 ## Requirements
 
-- Home Assistant with the `infrared` domain available (introduced in 2026.x)
-- An infrared emitter integration already set up (e.g. ESPHome, Broadlink)
+- Home Assistant with the `infrared` domain available (introduced in 2026.4)
+- An infrared emitter integration already set up (e.g. ESPHome, Unfolded Circle remote)
 
 ## Installation
 
@@ -72,7 +72,3 @@ Only **raw Pronto codes** (type `0000`) are supported. These are space-separated
 | `n2` | Number of mark/space pairs in the optional repeat sequence |
 
 Raw Pronto codes can be found on [Remote Central](http://www.remotecentral.com/) or exported from tools like [IrScrutinizer](https://github.com/bengtmartensson/IrScrutinizer).
-
-## License
-
-MIT
