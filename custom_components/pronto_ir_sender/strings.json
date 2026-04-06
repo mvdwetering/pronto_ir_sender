@@ -1,0 +1,28 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "This infrared transmitter is already configured as a Pronto IR Sender.",
+      "no_emitters": "No infrared transmitter entities found. Please set up an infrared emitter integration first (e.g., ESPHome or Broadlink)."
+    },
+    "step": {
+      "user": {
+        "data": {
+          "infrared_entity_id": "Infrared transmitter"
+        },
+        "data_description": {
+          "infrared_entity_id": "The infrared transmitter entity that will physically send the IR signals."
+        },
+        "description": "Select the infrared transmitter entity to use when sending Pronto IR codes.",
+        "title": "Set up Pronto IR Sender"
+      }
+    }
+  },
+  "exceptions": {
+    "invalid_pronto_code": {
+      "message": "Invalid Pronto code: {code}. Expected a space-separated list of hex words starting with '0000'."
+    },
+    "unsupported_pronto_type": {
+      "message": "Unsupported Pronto type {type} in code: {code}. Only raw Pronto codes (type 0000) are supported."
+    }
+  }
+}

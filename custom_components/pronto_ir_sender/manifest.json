@@ -1,0 +1,10 @@
+{
+  "domain": "pronto_ir_sender",
+  "name": "Pronto IR Sender",
+  "config_flow": true,
+  "dependencies": ["infrared"],
+  "documentation": "https://github.com/example/pronto_ir_sender",
+  "integration_type": "device",
+  "iot_class": "assumed_state",
+  "version": "0.0.1"
+}
