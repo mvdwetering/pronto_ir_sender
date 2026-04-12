@@ -6,5 +6,5 @@
   "documentation": "https://github.com/example/pronto_ir_sender",
   "integration_type": "device",
   "iot_class": "assumed_state",
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
