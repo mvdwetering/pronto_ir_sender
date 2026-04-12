@@ -1,0 +1,45 @@
+# Fan IR Template
+#
+# This template exposes a fan entity that sends Pronto IR codes via the
+# Pronto IR Sender integration. Replace each PRONTO_CODE_* placeholder
+# with the actual raw Pronto hex string for your fan remote.
+#
+# Prerequisites:
+#   - Pronto IR Sender integration set up (provides remote.pronto_ir_sender)
+#
+
+template:
+  - fan:
+      name: "Fan"
+      unique_id: fan_ir_template
+      assumed_state: true
+      availability: "{{ not is_state('remote.pronto_ir_sender', 'unavailable') }}"
+      preset_modes:
+        - Low
+        - Medium
+        - High
+
+      turn_on:
+        action: remote.send_command
+        target:
+          entity_id: remote.pronto_ir_sender
+        data:
+          command: "PRONTO_CODE_LOW"
+
+      turn_off:
+        action: remote.send_command
+        target:
+          entity_id: remote.pronto_ir_sender
+        data:
+          command: "PRONTO_CODE_OFF"
+
+      set_preset_mode:
+        action: remote.send_command
+        target:
+          entity_id: remote.pronto_ir_sender
+        data:
+          command: >
+            {% if preset_mode == 'Low' %}PRONTO_CODE_LOW
+            {% elif preset_mode == 'Medium' %}PRONTO_CODE_MEDIUM
+            {% elif preset_mode == 'High' %}PRONTO_CODE_HIGH
+            {% endif %}
