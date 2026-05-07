@@ -5,7 +5,7 @@ from __future__ import annotations
 import asyncio
 import logging
 from collections.abc import Iterable
-from typing import Any, override
+from typing import Any
 
 from infrared_protocols import Command
 
