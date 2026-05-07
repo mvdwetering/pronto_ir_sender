@@ -7,7 +7,7 @@ import logging
 from collections.abc import Iterable
 from typing import Any, override
 
-from infrared_protocols import Command, Timing
+from infrared_protocols import Command
 
 from homeassistant.components import infrared
 from homeassistant.components.remote import (
@@ -109,26 +109,27 @@ class ProntoCommand(Command):
         self._n1 = n1
         self._n2 = n2
 
-    @override
-    def get_raw_timings(self) -> list[Timing]:
+    def get_raw_timings(self) -> list[int]:
         """Return raw mark/space timings derived from the Pronto code."""
         unit = self._pronto_unit_us
-        timings: list[Timing] = []
+        timings: list[int] = []
 
         # Sequence 1 (played once)
         offset = 4
         for i in range(self._n1):
-            mark_us = self._words[offset + i * 2] * unit
-            space_us = self._words[offset + i * 2 + 1] * unit
-            timings.append(Timing(high_us=mark_us, low_us=space_us))
+            mark_us = int(self._words[offset + i * 2] * unit)
+            space_us = int(self._words[offset + i * 2 + 1] * unit)
+            timings.append(mark_us)
+            timings.append(-space_us)
 
         # Sequence 2 (repeat sequence), appended repeat_count times
         offset2 = 4 + self._n1 * 2
         for _ in range(self.repeat_count):
             for i in range(self._n2):
-                mark_us = self._words[offset2 + i * 2] * unit
-                space_us = self._words[offset2 + i * 2 + 1] * unit
-                timings.append(Timing(high_us=mark_us, low_us=space_us))
+                mark_us = int(self._words[offset2 + i * 2] * unit)
+                space_us = int(self._words[offset2 + i * 2 + 1] * unit)
+                timings.append(mark_us)
+                timings.append(-space_us)
 
         return timings
 
