@@ -6,5 +6,5 @@
   "documentation": "https://github.com/mvdwetering/pronto_ir_sender",
   "integration_type": "device",
   "iot_class": "assumed_state",
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
